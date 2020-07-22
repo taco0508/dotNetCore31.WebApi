@@ -58,7 +58,7 @@ namespace dotNetCore31.DataAccess.Repositories
                        WHERE [CustomerID] IN @customerIds";
 
         /// <summary>
-        /// 新增客戶
+        /// 新增客戶資料
         /// </summary>
         /// <param name="customersCreateDataModel">客戶CreateDataModel</param>
         /// <returns></returns>
@@ -76,7 +76,7 @@ namespace dotNetCore31.DataAccess.Repositories
         }
 
         /// <summary>
-        /// 新增客戶 SQL
+        /// 新增客戶資料 SQL
         /// </summary>
         private string CreateCustomerAsyncSQL =>
             @"INSERT INTO [dbo].[Customers] 
@@ -109,5 +109,43 @@ namespace dotNetCore31.DataAccess.Repositories
               ,@ALPHA_3
               ,@Phone
               ,@Fax);";
+
+        /// <summary>
+        /// 更新客戶資料
+        /// </summary>
+        /// <param name="customersUpdateDataModel">客戶UpdateDataModel</param>
+        /// <returns></returns>
+        public async Task<int> UpdateCustomerAsync(CustomersUpdateDataModel customersUpdateDataModel)
+        {
+            using (var conn = this._connectionHelper.GetNorthwindConnection())
+            {
+                var result = await conn.ExecuteAsync
+                (
+                    this.UpdateCustomerAsyncSQL,
+                    customersUpdateDataModel
+                );
+                return result;
+            }
+        }
+
+        /// <summary>
+        /// 更新客戶資料 SQL
+        /// </summary>
+        private string UpdateCustomerAsyncSQL =>
+            @"UPDATE [dbo].[Customers] 
+              SET [CompanyName] = @CompanyName
+                 ,[ContactName] = @ContactName
+                 ,[ContactTitle] = @ContactTitle
+                 ,[Address] = @Address
+                 ,[City] = @City
+                 ,[Region] = @Region
+                 ,[PostalCode] = @PostalCode
+                 ,[Country] = @Country
+                 ,[NUM-3] = @NUM_3
+                 ,[ALPHA-2] = @ALPHA_2
+                 ,[ALPHA-3] = @ALPHA_3
+                 ,[Phone] = @Phone
+                 ,[Fax] = @Fax 
+              WHERE [CustomerID] = @CustomerID ";
     }
 }

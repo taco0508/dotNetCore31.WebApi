@@ -8,9 +8,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.WebApplication", "1.WebApplication", "{3C80BA59-4A1E-444D-BF9B-6B71017CC739}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.Business", "2.Business", "{E31E73BB-6F77-41F3-8D50-9D7201639FCD}"
-	ProjectSection(SolutionItems) = preProject
-		dotNetCore31.Business\Infrastructure\Mappings\ServiceMappingProfile.cs = dotNetCore31.Business\Infrastructure\Mappings\ServiceMappingProfile.cs
-	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dotNetCore31.Business", "dotNetCore31.Business\dotNetCore31.Business.csproj", "{21D950B8-C647-4783-9FFB-46819C0F9F1C}"
 EndProject

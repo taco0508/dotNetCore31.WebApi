@@ -10,6 +10,7 @@ namespace dotNetCore31.WebApi.Infrastructure.Mappings
         {
             this.CreateMap<CustomersDto, CustomersViewModel>().ReverseMap();
             this.CreateMap<CustomersCreateDto, CustomersCreateViewModel>().ReverseMap();
+            this.CreateMap<CustomersUpdateDto, CustomersUpdateViewModel>().ReverseMap();
         }
     }
 }

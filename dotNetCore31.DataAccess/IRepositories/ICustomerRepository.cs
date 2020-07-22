@@ -14,10 +14,17 @@ namespace dotNetCore31.DataAccess.IRepositories
         Task<IEnumerable<CustomersDataModel>> GetCustomerListAsync(IEnumerable<string> customerIds);
 
         /// <summary>
-        /// 新增客戶
+        /// 新增客戶資料
         /// </summary>
         /// <param name="customersCreateDataModel">客戶CreateDataModel</param>
         /// <returns></returns>
         Task<int> CreateCustomerAsync(CustomersCreateDataModel customersCreateDataModel);
+
+        /// <summary>
+        /// 更新客戶資料
+        /// </summary>
+        /// <param name="customersUpdateDataModel">客戶UpdateDataModel</param>
+        /// <returns></returns>
+        Task<int> UpdateCustomerAsync(CustomersUpdateDataModel customersUpdateDataModel);
     }
 }

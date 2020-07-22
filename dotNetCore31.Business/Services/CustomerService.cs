@@ -44,5 +44,17 @@ namespace dotNetCore31.Business.Services
             var result = await this._customerRepository.CreateCustomerAsync(data);         
             return result;
         }
+
+        /// <summary>
+        /// 更新客戶資料
+        /// </summary>
+        /// <param name="customersUpdateDto">客戶UpdateDto</param>
+        /// <returns></returns>
+        public async Task<int> UpdateCustomerAsync(CustomersUpdateDto customersUpdateDto)
+        {
+            var data = this._mapper.Map<CustomersUpdateDto, CustomersUpdateDataModel>(customersUpdateDto);
+            var result = await this._customerRepository.UpdateCustomerAsync(data);
+            return result;
+        }
     }
 }

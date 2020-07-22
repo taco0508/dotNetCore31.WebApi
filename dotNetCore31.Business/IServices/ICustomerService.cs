@@ -14,10 +14,17 @@ namespace dotNetCore31.Business.IServices
         Task<IEnumerable<CustomersDto>> GetCustomerListAsync(IEnumerable<string> customerIds);
 
         /// <summary>
-        /// 新增客戶
+        /// 新增客戶資料
         /// </summary>
         /// <param name="customersCreateDto">客戶CreateDto</param>
         /// <returns></returns>
         Task<int> CreateCustomerAsync(CustomersCreateDto customersCreateDto);
+
+        /// <summary>
+        /// 更新客戶資料
+        /// </summary>
+        /// <param name="customersUpdateDto">客戶UpdateDto</param>
+        /// <returns></returns>
+        Task<int> UpdateCustomerAsync(CustomersUpdateDto customersUpdateDto);
     }
 }

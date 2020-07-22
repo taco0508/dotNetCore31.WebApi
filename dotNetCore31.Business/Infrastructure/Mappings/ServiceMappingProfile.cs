@@ -10,6 +10,7 @@ namespace dotNetCore31.Business.Infrastructure.Mappings
         {
             this.CreateMap<CustomersDataModel, CustomersDto>().ReverseMap();
             this.CreateMap<CustomersCreateDataModel, CustomersCreateDto>().ReverseMap();
+            this.CreateMap<CustomersUpdateDataModel, CustomersUpdateDto>().ReverseMap();
         }
     }
 }

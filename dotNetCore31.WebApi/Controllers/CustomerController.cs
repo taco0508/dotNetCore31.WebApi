@@ -50,15 +50,28 @@ namespace dotNetCore31.WebApi.Controllers
         }
 
         /// <summary>
-        /// 新增客戶
+        /// 新增客戶資料
         /// </summary>
-        /// <param name="customersCreateViewModel">客戶新增Model</param>
+        /// <param name="customersCreateViewModel">客戶CreateViewModel</param>
         /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> CreateCustomerAsync([FromBody] CustomersCreateViewModel customersCreateViewModel)
         {
             var data = this._mapper.Map<CustomersCreateViewModel, CustomersCreateDto>(customersCreateViewModel);
             var result = await this._customerService.CreateCustomerAsync(data);
+            return Ok(result);
+        }
+
+        /// <summary>
+        /// 更新客戶資料
+        /// </summary>
+        /// <param name="customersUpdateViewModel">客戶UpdateViewModel</param>
+        /// <returns></returns>
+        [HttpPut]
+        public async Task<IActionResult> UpdateCustomerAsync([FromBody] CustomersUpdateViewModel customersUpdateViewModel)
+        {
+            var data = this._mapper.Map<CustomersUpdateViewModel, CustomersUpdateDto>(customersUpdateViewModel);
+            var result = await this._customerService.UpdateCustomerAsync(data);
             return Ok(result);
         }
     }
