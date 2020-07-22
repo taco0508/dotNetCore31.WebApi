@@ -12,11 +12,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.Business", "2.Business", 
 		dotNetCore31.Business\Infrastructure\Mappings\ServiceMappingProfile.cs = dotNetCore31.Business\Infrastructure\Mappings\ServiceMappingProfile.cs
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotNetCore31.Business", "dotNetCore31.Business\dotNetCore31.Business.csproj", "{21D950B8-C647-4783-9FFB-46819C0F9F1C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dotNetCore31.Business", "dotNetCore31.Business\dotNetCore31.Business.csproj", "{21D950B8-C647-4783-9FFB-46819C0F9F1C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.DataAccess", "3.DataAccess", "{36540778-6E84-40CA-873C-C08170034F95}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotNetCore31.DataAccess", "dotNetCore31.DataAccess\dotNetCore31.DataAccess.csproj", "{E1702630-BE17-43F8-A71C-4C800A6A2668}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dotNetCore31.DataAccess", "dotNetCore31.DataAccess\dotNetCore31.DataAccess.csproj", "{E1702630-BE17-43F8-A71C-4C800A6A2668}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.Common", "4.Common", "{98F9A111-84B1-483C-8117-6796C558616D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.Test", "5.Test", "{9BBCED98-9F1F-46EE-8035-0EE870C9E8CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotNetCore31.Business.Tests", "dotNetCore31.Business.Tests\dotNetCore31.Business.Tests.csproj", "{4A6111CB-8811-49D3-8DCF-77383B3842B7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,6 +42,10 @@ Global
 		{E1702630-BE17-43F8-A71C-4C800A6A2668}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E1702630-BE17-43F8-A71C-4C800A6A2668}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E1702630-BE17-43F8-A71C-4C800A6A2668}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A6111CB-8811-49D3-8DCF-77383B3842B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A6111CB-8811-49D3-8DCF-77383B3842B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A6111CB-8811-49D3-8DCF-77383B3842B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A6111CB-8811-49D3-8DCF-77383B3842B7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -44,6 +54,7 @@ Global
 		{B3B32CA6-64C1-4858-B4C0-45F615D956F0} = {3C80BA59-4A1E-444D-BF9B-6B71017CC739}
 		{21D950B8-C647-4783-9FFB-46819C0F9F1C} = {E31E73BB-6F77-41F3-8D50-9D7201639FCD}
 		{E1702630-BE17-43F8-A71C-4C800A6A2668} = {36540778-6E84-40CA-873C-C08170034F95}
+		{4A6111CB-8811-49D3-8DCF-77383B3842B7} = {9BBCED98-9F1F-46EE-8035-0EE870C9E8CD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AA42D9E0-9F56-45E3-ABDA-7656C46E5ED4}
