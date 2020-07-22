@@ -2,6 +2,7 @@ using AutoMapper;
 using dotNetCore31.Business.Infrastructure.Mappings;
 using dotNetCore31.Business.IServices;
 using dotNetCore31.Business.Services;
+using dotNetCore31.DataAccess.Infrastructure.Helpers.Connection;
 using dotNetCore31.DataAccess.IRepositories;
 using dotNetCore31.DataAccess.Repositories;
 using dotNetCore31.WebApi.Infrastructure.Mappings;
@@ -25,6 +26,10 @@ namespace dotNetCore31.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            //Connection
+            services.AddTransient<IConnectionHelper, ConnectionHelper>();
+            services.AddTransient<IConnectionStringHelper, ConnectionStringHelper>();
 
             //Repository
             services.AddTransient<ICustomerRepository, CustomerRepository>();

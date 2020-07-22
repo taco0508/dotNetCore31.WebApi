@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using AutoMapper;
 using dotNetCore31.Business.Dtos;
 using dotNetCore31.Business.IServices;
@@ -22,12 +23,16 @@ namespace dotNetCore31.WebApi.Controllers
             this._customerService = customerService;
         }
 
-        [HttpGet]
-        public IEnumerable<CustomersViewModel> GetCustomerList(IEnumerable<int> customerIds)
+        /// <summary>
+        /// 取得客戶清單
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("GetCustomerList")]
+        public async Task<IActionResult> GetCustomerListAsync(IEnumerable<string> customerIds)
         {
-            var data = this._customerService.GetCustomerList(customerIds);
+            var data = await this._customerService.GetCustomerListAsync(customerIds);
             var result = this._mapper.Map<IEnumerable<CustomersDto>, IEnumerable<CustomersViewModel>>(data);
-            return result;
+            return Ok(result);
         }
     }
 }

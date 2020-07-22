@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using AutoMapper;
 using dotNetCore31.Business.Dtos;
 using dotNetCore31.Business.IServices;
@@ -20,9 +21,14 @@ namespace dotNetCore31.Business.Services
             this._customerRepository = customerRepository;
         }
 
-        public IEnumerable<CustomersDto> GetCustomerList(IEnumerable<int> customerIds)
+        /// <summary>
+        /// 取得客戶清單
+        /// </summary>
+        /// <param name="customerIds">客戶編號(多筆)</param>
+        /// <returns></returns>
+        public async Task<IEnumerable<CustomersDto>> GetCustomerListAsync(IEnumerable<string> customerIds)
         {
-            var data = this._customerRepository.GetCustomerList(customerIds);
+            var data = await this._customerRepository.GetCustomerListAsync(customerIds);
             var result = this._mapper.Map<IEnumerable<CustomersDataModel>, IEnumerable<CustomersDto>>(data);
             return result;
         }
