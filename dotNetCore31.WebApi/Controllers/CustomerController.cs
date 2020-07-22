@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using System.Collections.Generic;
+using AutoMapper;
+using dotNetCore31.Business.Dtos;
+using dotNetCore31.Business.IServices;
+using dotNetCore31.WebApi.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace dotNetCore31.WebApi.Controllers
@@ -11,10 +11,23 @@ namespace dotNetCore31.WebApi.Controllers
     [Route("api/[controller]")]
     public class CustomerController : ControllerBase
     {
-        [HttpGet]
-        public object GetCustomer() 
+        private readonly IMapper _mapper;
+        private readonly ICustomerService _customerService;
+
+        public CustomerController(
+            IMapper mapper,
+            ICustomerService customerService)
         {
-            return new { CustomerId = 1, CustomerName = "Taco" };
+            this._mapper = mapper;
+            this._customerService = customerService;
+        }
+
+        [HttpGet]
+        public IEnumerable<CustomersViewModel> GetCustomerList(IEnumerable<int> customerIds)
+        {
+            var data = this._customerService.GetCustomerList(customerIds);
+            var result = this._mapper.Map<IEnumerable<CustomersDto>, IEnumerable<CustomersViewModel>>(data);
+            return result;
         }
     }
 }
