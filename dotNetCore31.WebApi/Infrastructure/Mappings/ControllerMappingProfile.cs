@@ -8,7 +8,8 @@ namespace dotNetCore31.WebApi.Infrastructure.Mappings
     {
         public ControllerMappingProfile()
         {
-            this.CreateMap<CustomersDto, CustomersViewModel>();
+            this.CreateMap<CustomersDto, CustomersViewModel>().ReverseMap();
+            this.CreateMap<CustomersCreateDto, CustomersCreateViewModel>().ReverseMap();
         }
     }
 }

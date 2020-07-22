@@ -26,7 +26,7 @@ namespace dotNetCore31.WebApi.Controllers
         /// <summary>
         /// 取得客戶清單(單筆)
         /// </summary>
-        /// <param name="customerId">The customer id.</param>
+        /// <param name="customerId">客戶編號</param>
         /// <returns></returns>
         [HttpGet("{customerId}")]
         public async Task<IActionResult> GetCustomerListAsync(string customerId)
@@ -39,12 +39,26 @@ namespace dotNetCore31.WebApi.Controllers
         /// <summary>
         /// 取得客戶清單(多筆)
         /// </summary>
+        /// <param name="customerIds">客戶編號(多筆)</param>
         /// <returns></returns>
         [HttpGet("List")]
         public async Task<IActionResult> GetCustomerListAsync([FromBody] IEnumerable<string> customerIds)
         {
             var data = await this._customerService.GetCustomerListAsync(customerIds);
             var result = this._mapper.Map<IEnumerable<CustomersDto>, IEnumerable<CustomersViewModel>>(data);
+            return Ok(result);
+        }
+
+        /// <summary>
+        /// 新增客戶
+        /// </summary>
+        /// <param name="customersCreateViewModel">客戶新增Model</param>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<IActionResult> CreateCustomerAsync([FromBody] CustomersCreateViewModel customersCreateViewModel)
+        {
+            var data = this._mapper.Map<CustomersCreateViewModel, CustomersCreateDto>(customersCreateViewModel);
+            var result = await this._customerService.CreateCustomerAsync(data);
             return Ok(result);
         }
     }

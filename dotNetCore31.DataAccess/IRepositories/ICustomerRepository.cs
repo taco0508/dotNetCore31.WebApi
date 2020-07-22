@@ -12,5 +12,12 @@ namespace dotNetCore31.DataAccess.IRepositories
         /// <param name="customerIds">客戶編號(多筆)</param>
         /// <returns></returns>
         Task<IEnumerable<CustomersDataModel>> GetCustomerListAsync(IEnumerable<string> customerIds);
+
+        /// <summary>
+        /// 新增客戶
+        /// </summary>
+        /// <param name="customersCreateDataModel">客戶CreateDataModel</param>
+        /// <returns></returns>
+        Task<int> CreateCustomerAsync(CustomersCreateDataModel customersCreateDataModel);
     }
 }

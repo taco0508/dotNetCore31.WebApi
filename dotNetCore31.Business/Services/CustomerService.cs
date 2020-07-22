@@ -32,5 +32,17 @@ namespace dotNetCore31.Business.Services
             var result = this._mapper.Map<IEnumerable<CustomersDataModel>, IEnumerable<CustomersDto>>(data);
             return result;
         }
+
+        /// <summary>
+        /// 新增客戶
+        /// </summary>
+        /// <param name="customersCreateDto">客戶CreateDto</param>
+        /// <returns></returns>
+        public async Task<int> CreateCustomerAsync(CustomersCreateDto customersCreateDto)
+        {
+            var data = this._mapper.Map<CustomersCreateDto, CustomersCreateDataModel>(customersCreateDto);
+            var result = await this._customerRepository.CreateCustomerAsync(data);         
+            return result;
+        }
     }
 }

@@ -40,21 +40,74 @@ namespace dotNetCore31.DataAccess.Repositories
         /// </summary>
         private string GetCustomerListAsyncSQL => 
                      @"SELECT
-                     [CustomerID],
-                     [CompanyName],
-	                 [ContactName],
-	                 [ContactTitle],
-	                 [Address],
-	                 [City],
-	                 [Region],
-	                 [PostalCode],
-	                 [Country],
-	                 [NUM-3] AS [NUM_3],
-	                 [ALPHA-2] AS [ALPHA_2],
-	                 [ALPHA-3] AS [ALPHA_3],
-	                 [Phone],
-	                 [Fax]
-                     FROM [dbo].[Customers]
-                     WHERE [CustomerID] IN @customerIds";
+                       [CustomerID],
+                       [CompanyName],
+	                   [ContactName],
+	                   [ContactTitle],
+	                   [Address],
+	                   [City],
+	                   [Region],
+	                   [PostalCode],
+	                   [Country],
+	                   [NUM-3] AS [NUM_3],
+	                   [ALPHA-2] AS [ALPHA_2],
+	                   [ALPHA-3] AS [ALPHA_3],
+	                   [Phone],
+	                   [Fax]
+                       FROM [dbo].[Customers]
+                       WHERE [CustomerID] IN @customerIds";
+
+        /// <summary>
+        /// 新增客戶
+        /// </summary>
+        /// <param name="customersCreateDataModel">客戶CreateDataModel</param>
+        /// <returns></returns>
+        public async Task<int> CreateCustomerAsync(CustomersCreateDataModel customersCreateDataModel)
+        {
+            using (var conn = this._connectionHelper.GetNorthwindConnection())
+            {
+                var result = await conn.ExecuteAsync
+                (
+                    this.CreateCustomerAsyncSQL,
+                    customersCreateDataModel
+                );
+                return result;
+            }
+        }
+
+        /// <summary>
+        /// 新增客戶 SQL
+        /// </summary>
+        private string CreateCustomerAsyncSQL =>
+            @"INSERT INTO [dbo].[Customers] 
+              ([CustomerID]
+              ,[CompanyName]
+              ,[ContactName]
+              ,[ContactTitle]
+              ,[Address]
+              ,[City]
+              ,[Region]
+              ,[PostalCode]
+              ,[Country]
+              ,[NUM-3]
+              ,[ALPHA-2]
+              ,[ALPHA-3]
+              ,[Phone]
+              ,[Fax])
+               VALUES
+              (@CustomerID
+              ,@CompanyName
+              ,@ContactName
+              ,@ContactTitle
+              ,@Address
+              ,@City
+              ,@Region
+              ,@PostalCode
+              ,@Country
+              ,@NUM_3
+              ,@ALPHA_2
+              ,@ALPHA_3
+              ,@Phone
+              ,@Fax);";
     }
 }

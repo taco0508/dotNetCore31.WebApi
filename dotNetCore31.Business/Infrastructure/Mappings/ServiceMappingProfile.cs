@@ -8,7 +8,8 @@ namespace dotNetCore31.Business.Infrastructure.Mappings
     {
         public ServiceMappingProfile()
         {
-            this.CreateMap<CustomersDataModel, CustomersDto>();
+            this.CreateMap<CustomersDataModel, CustomersDto>().ReverseMap();
+            this.CreateMap<CustomersCreateDataModel, CustomersCreateDto>().ReverseMap();
         }
     }
 }
