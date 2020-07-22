@@ -27,7 +27,7 @@ namespace dotNetCore31.DataAccess.Repositories
             {
                 var result = await conn.QueryAsync<CustomersDataModel>
                 (
-                    this.GetCustomerListAsyncSQL(),
+                    this.GetCustomerListAsyncSQL,
                     new { customerIds = customerIds }
                 );
 
@@ -38,10 +38,8 @@ namespace dotNetCore31.DataAccess.Repositories
         /// <summary>
         /// 取得客戶清單 SQL
         /// </summary>
-        /// <returns></returns>
-        private string GetCustomerListAsyncSQL()
-        {
-            return @"SELECT
+        private string GetCustomerListAsyncSQL => 
+                     @"SELECT
                      [CustomerID],
                      [CompanyName],
 	                 [ContactName],
@@ -58,6 +56,5 @@ namespace dotNetCore31.DataAccess.Repositories
 	                 [Fax]
                      FROM [dbo].[Customers]
                      WHERE [CustomerID] IN @customerIds";
-        }
     }
 }

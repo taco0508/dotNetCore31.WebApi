@@ -24,11 +24,24 @@ namespace dotNetCore31.WebApi.Controllers
         }
 
         /// <summary>
-        /// 取得客戶清單
+        /// 取得客戶清單(單筆)
+        /// </summary>
+        /// <param name="customerId">The customer id.</param>
+        /// <returns></returns>
+        [HttpGet("{customerId}")]
+        public async Task<IActionResult> GetCustomerListAsync(string customerId)
+        {
+            var data = await this._customerService.GetCustomerListAsync(new[] { customerId });
+            var result = this._mapper.Map<IEnumerable<CustomersDto>, IEnumerable<CustomersViewModel>>(data);
+            return Ok(result);
+        }
+
+        /// <summary>
+        /// 取得客戶清單(多筆)
         /// </summary>
         /// <returns></returns>
-        [HttpGet("GetCustomerList")]
-        public async Task<IActionResult> GetCustomerListAsync(IEnumerable<string> customerIds)
+        [HttpGet("List")]
+        public async Task<IActionResult> GetCustomerListAsync([FromBody] IEnumerable<string> customerIds)
         {
             var data = await this._customerService.GetCustomerListAsync(customerIds);
             var result = this._mapper.Map<IEnumerable<CustomersDto>, IEnumerable<CustomersViewModel>>(data);
