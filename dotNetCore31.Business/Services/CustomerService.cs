@@ -56,5 +56,16 @@ namespace dotNetCore31.Business.Services
             var result = await this._customerRepository.UpdateCustomerAsync(data);
             return result;
         }
+
+        /// <summary>
+        /// 刪除客戶資料
+        /// </summary>
+        /// <param name="customerId">客戶編號</param>
+        /// <returns></returns>
+        public async Task<int> DeleteCustomerAsync(string customerId)
+        {
+            var result = await this._customerRepository.DeleteCustomerAsync(customerId);
+            return result;
+        }
     }
 }

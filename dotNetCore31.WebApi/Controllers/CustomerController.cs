@@ -74,5 +74,17 @@ namespace dotNetCore31.WebApi.Controllers
             var result = await this._customerService.UpdateCustomerAsync(data);
             return Ok(result);
         }
+
+        /// <summary>
+        /// 刪除客戶資料
+        /// </summary>
+        /// <param name="customerId">客戶編號</param>
+        /// <returns></returns>
+        [HttpDelete("{customerId}")]
+        public async Task<IActionResult>DeleteCustomerAsync(string customerId)
+        {
+            var result = await this._customerService.DeleteCustomerAsync(customerId);
+            return Ok(result);
+        }
     }
 }

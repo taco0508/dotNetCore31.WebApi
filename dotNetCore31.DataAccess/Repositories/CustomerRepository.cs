@@ -28,7 +28,7 @@ namespace dotNetCore31.DataAccess.Repositories
                 var result = await conn.QueryAsync<CustomersDataModel>
                 (
                     this.GetCustomerListAsyncSQL,
-                    new { customerIds = customerIds }
+                    new { CustomerIDs = customerIds }
                 );
 
                 return result;
@@ -38,7 +38,7 @@ namespace dotNetCore31.DataAccess.Repositories
         /// <summary>
         /// 取得客戶清單 SQL
         /// </summary>
-        private string GetCustomerListAsyncSQL => 
+        private string GetCustomerListAsyncSQL =>
                      @"SELECT
                        [CustomerID],
                        [CompanyName],
@@ -55,7 +55,7 @@ namespace dotNetCore31.DataAccess.Repositories
 	                   [Phone],
 	                   [Fax]
                        FROM [dbo].[Customers]
-                       WHERE [CustomerID] IN @customerIds";
+                       WHERE [CustomerID] IN @CustomerIDs";
 
         /// <summary>
         /// 新增客戶資料
@@ -147,5 +147,30 @@ namespace dotNetCore31.DataAccess.Repositories
                  ,[Phone] = @Phone
                  ,[Fax] = @Fax 
               WHERE [CustomerID] = @CustomerID ";
+
+        /// <summary>
+        /// 刪除客戶資料
+        /// </summary>
+        /// <param name="customerId">客戶編號</param>
+        /// <returns></returns>
+        public async Task<int> DeleteCustomerAsync(string customerId)
+        {
+            using (var conn = this._connectionHelper.GetNorthwindConnection())
+            {
+                var result = await conn.ExecuteAsync
+                (
+                    this.DeleteCustomerAsyncSQL,
+                    new { CustomerID = customerId }
+                );
+                return result;
+            }
+        }
+
+        /// <summary>
+        /// 刪除客戶資料 SQL
+        /// </summary>
+        private string DeleteCustomerAsyncSQL =>
+            @"DELETE [dbo].[Customers] 
+              WHERE [CustomerID] = @CustomerID";
     }
 }

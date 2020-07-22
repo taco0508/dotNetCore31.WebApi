@@ -26,5 +26,12 @@ namespace dotNetCore31.DataAccess.IRepositories
         /// <param name="customersUpdateDataModel">客戶UpdateDataModel</param>
         /// <returns></returns>
         Task<int> UpdateCustomerAsync(CustomersUpdateDataModel customersUpdateDataModel);
+
+        /// <summary>
+        /// 刪除客戶資料
+        /// </summary>
+        /// <param name="customerId">客戶編號</param>
+        /// <returns></returns>
+        Task<int> DeleteCustomerAsync(string customerId);
     }
 }

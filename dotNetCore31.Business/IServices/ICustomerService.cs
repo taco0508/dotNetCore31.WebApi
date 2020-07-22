@@ -26,5 +26,12 @@ namespace dotNetCore31.Business.IServices
         /// <param name="customersUpdateDto">客戶UpdateDto</param>
         /// <returns></returns>
         Task<int> UpdateCustomerAsync(CustomersUpdateDto customersUpdateDto);
+
+        /// <summary>
+        /// 刪除客戶資料
+        /// </summary>
+        /// <param name="customerId">客戶編號</param>
+        /// <returns></returns>
+        Task<int> DeleteCustomerAsync(string customerId);
     }
 }
